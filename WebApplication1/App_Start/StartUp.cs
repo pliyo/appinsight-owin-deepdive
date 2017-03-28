@@ -18,11 +18,6 @@ namespace WebApplication1.App_Start
 
             app.UseApplicationInsights();
             app.UseWebApi(config);
-            app.Run(context =>
-            {
-                context.Response.ContentType = "text/plain";
-                return context.Response.WriteAsync("Hello, world.");
-            });
         }
     }
 }
