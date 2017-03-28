@@ -6,7 +6,7 @@ Quick recap on what Owin needs:
 2. `Microsoft.AspNet.WebApi.OwinSelfHost`.
 Once you have that, you can delete the old Global.asax. Feeling better, right? 
 
-Also, you'll need .NET 4.6.2 but I guess you have that already.
+Also, you'll need .NET 4.6.2 but I guess you have that already. ([Check here if you don't have it](https://www.microsoft.com/en-us/download/details.aspx?id=53344))
 At the time of running this deep dive, Application Insights was running free in its Basic Tier.
 [Detailed information about pricing](https://azure.microsoft.com/en-gb/pricing/details/application-insights/)
 
