@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInsightOwinDeepDive", "WebApplication1\AppInsightOwinDeepDive.csproj", "{D3019E9D-AE6D-4B7B-9809-C056539DEAB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInsightOwinDeepDive", "AppInsightOwinDeepDive\AppInsightOwinDeepDive.csproj", "{D3019E9D-AE6D-4B7B-9809-C056539DEAB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInsightOwinDeepDive.IntegrationTests", "AppInsightOwinDeepDive.IntegrationTests\AppInsightOwinDeepDive.IntegrationTests.csproj", "{1228FDC8-01C9-461C-8724-028E21801328}"
 EndProject
