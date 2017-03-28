@@ -9,7 +9,7 @@ Once you have that, you can delete the old Global.asax. Feeling better, right?
 
 Also, you'll need .NET 4.6.2 but I guess you have that already.
 At the time of running this deep dive, Application Insights was running free in its Basic Tier.
-[Detailed information about pricing] pricing(https://azure.microsoft.com/en-gb/pricing/details/application-insights/)
+[Detailed information about pricing](https://azure.microsoft.com/en-gb/pricing/details/application-insights/)
 
 Cool, let's get started.
 
