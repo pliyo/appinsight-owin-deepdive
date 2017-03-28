@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
-using WebApplication1.Models;
-using WebApplication1.Services;
+using AppInsightOwinDeepDive.Models;
+using AppInsightOwinDeepDive.Services;
 
 namespace AppInsightOwinDeepDive.IntegrationTests
 {

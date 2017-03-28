@@ -3,9 +3,9 @@ using System.Collections.Specialized;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
-using WebApplication1.Models;
+using AppInsightOwinDeepDive.Models;
 
-namespace WebApplication1.Services
+namespace AppInsightOwinDeepDive.Services
 {
     public class SlackClient
     {

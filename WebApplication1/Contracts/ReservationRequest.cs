@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebApplication1.Reservation
+namespace AppInsightOwinDeepDive.Reservation
 {
     public class ReservationRequest
     {

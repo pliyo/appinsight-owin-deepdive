@@ -1,11 +1,11 @@
 ﻿using System.Web.Http;
 
-namespace WebApplication1.Controllers
+namespace AppInsightOwinDeepDive.Controllers
 {
     public class HomeController : ApiController
     {
+        [Route("home")]
         [HttpGet]
-        [Route("Home")]
         public string Index()
         {
             var something = "something";

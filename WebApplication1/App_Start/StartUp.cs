@@ -1,13 +1,13 @@
-﻿using ApplicationInsights.OwinExtensions;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
 using System.Web.Http;
-using WebApplication1.App_Start;
-using WebApplication1.Jobs;
+using ApplicationInsights.OwinExtensions;
+using AppInsightOwinDeepDive.App_Start;
+using AppInsightOwinDeepDive.Jobs;
 
-[assembly: OwinStartup(typeof(StartUp))]
+[assembly: OwinStartup("StartUp", typeof(StartUp))]
 
-namespace WebApplication1.App_Start
+namespace AppInsightOwinDeepDive.App_Start
 {
     public class StartUp
     {

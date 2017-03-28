@@ -53,12 +53,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebApplication1\WebApplication1.csproj">
+    <ProjectReference Include="..\WebApplication1\AppInsightOwinDeepDive.csproj">
       <Project>{d3019e9d-ae6d-4b7b-9809-c056539deab6}</Project>
-      <Name>WebApplication1</Name>
+      <Name>AppInsightOwinDeepDive</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

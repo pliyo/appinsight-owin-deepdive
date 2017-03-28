@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace WebApplication1.Controllers
+namespace AppInsightOwinDeepDive.Controllers
 {
     public class HealthController : ApiController
     {

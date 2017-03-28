@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using Shouldly;
-using WebApplication1.Reservation;
-using WebApplication1.Services;
+using AppInsightOwinDeepDive.Reservation;
+using AppInsightOwinDeepDive.Services;
 
 namespace AppInsightOwinDeepDive.UnitTests
 {

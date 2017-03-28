@@ -1,32 +1,35 @@
-﻿using Quartz;
-using WebApplication1.Models;
-using WebApplication1.Reservation;
-using WebApplication1.Services;
+﻿using System.Linq;
+using Quartz;
+using AppInsightOwinDeepDive.Helpers;
+using AppInsightOwinDeepDive.Models;
+using AppInsightOwinDeepDive.Services;
 
-namespace WebApplication1.Jobs
+namespace AppInsightOwinDeepDive.Jobs
 {
     public class SenderJob : IJob
     {
         public void Execute(IJobExecutionContext context)
         {
+            AppInsightHelper.LogMetric(SendNotificationsForPriorityReservations, "SenderJob Running");
+        }
+
+        private void SendNotificationsForPriorityReservations()
+        {
             var priorityReservations = ReservationService.PriorityReservations();
             var slackClient = new SlackClient();
 
-            foreach (var reservation in priorityReservations)
-            {
-                if (string.IsNullOrEmpty(reservation.SlackWebHook)) continue;
+            var payload = CreatePayloadFromReservationInformation(CommunicationService.SlackChannel(),
+                                                                  priorityReservations.Count);
 
-                var payload = CreatePayloadFromRequest(reservation);
-                slackClient.SendMessage(payload, reservation.SlackWebHook);
-            }
+            slackClient.SendMessage(payload, CommunicationService.SlackWebHook());
         }
 
-        private SlackPayload CreatePayloadFromRequest(ReservationRequest reservation)
+        private SlackPayload CreatePayloadFromReservationInformation(string slackChannel, int totalReservations)
         {
             var payload = new SlackPayload()
             {
-                Channel = reservation.SlackChannel,
-                Text = $"{reservation.Owner} has made a reservation with {reservation.TicketId}"
+                Channel = slackChannel,
+                Text = $"{totalReservations} prepaid reservations done in the last 5 minutes"
             };
             return payload;
         }

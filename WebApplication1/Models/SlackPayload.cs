@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WebApplication1.Models
+namespace AppInsightOwinDeepDive.Models
 {
     public class SlackPayload
     {

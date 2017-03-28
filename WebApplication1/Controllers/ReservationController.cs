@@ -1,8 +1,8 @@
 ﻿using System.Web.Http;
-using WebApplication1.Reservation;
-using WebApplication1.Services;
+using AppInsightOwinDeepDive.Reservation;
+using AppInsightOwinDeepDive.Services;
 
-namespace WebApplication1.Controllers
+namespace AppInsightOwinDeepDive.Controllers
 {
     public class ReservationController : ApiController
     {

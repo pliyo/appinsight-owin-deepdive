@@ -1,11 +1,11 @@
 using System.Web.Http;
 using WebActivatorEx;
-using WebApplication1;
+using AppInsightOwinDeepDive;
 using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace WebApplication1
+namespace AppInsightOwinDeepDive
 {
     public class SwaggerConfig
     {

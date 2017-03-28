@@ -1,7 +1,8 @@
 ﻿using System.Collections.Concurrent;
-using WebApplication1.Reservation;
+using System.Linq;
+using AppInsightOwinDeepDive.Reservation;
 
-namespace WebApplication1.Services
+namespace AppInsightOwinDeepDive.Services
 {
     public static class ReservationService
     {
@@ -24,6 +25,11 @@ namespace WebApplication1.Services
             }
 
             return importantReservations;
+        }
+
+        public static string SlackWebHook()
+        {
+            return PriorityReservations().First().SlackWebHook;
         }
     }
 }

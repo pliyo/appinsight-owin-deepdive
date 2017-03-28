@@ -1,7 +1,7 @@
 ﻿using Quartz;
 using Quartz.Impl;
 
-namespace WebApplication1.Jobs
+namespace AppInsightOwinDeepDive.Jobs
 {
     public class JobScheduler
     {
@@ -15,10 +15,9 @@ namespace WebApplication1.Jobs
             ITrigger trigger = TriggerBuilder.Create()
                 .WithDailyTimeIntervalSchedule
                   (s =>
-                     s.WithIntervalInMinutes(10)
-                    .OnEveryDay()
-                    .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
+                     s.WithIntervalInMinutes(5)
                   )
+                .StartNow()
                 .Build();
 
             scheduler.ScheduleJob(job, trigger);
