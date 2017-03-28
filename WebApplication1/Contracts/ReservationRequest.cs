@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Policy;
 
 namespace WebApplication1.Reservation
 {
@@ -21,5 +20,8 @@ namespace WebApplication1.Reservation
         public bool Prepaid { get; set; }
 
         public string CorrelationId { get; set; }
+        public string SlackWebHook { get; set; }
+        public string SlackChannel { get; set; }
+
     }
 }

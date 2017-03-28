@@ -3,17 +3,27 @@ using WebApplication1.Reservation;
 
 namespace WebApplication1.Services
 {
-    public class ReservationService
+    public static class ReservationService
     {
-        private ConcurrentDictionary<string, ReservationRequest> reservations = new ConcurrentDictionary<string, ReservationRequest>();
-        public virtual void Create(ReservationRequest reservation)
+        private static ConcurrentDictionary<string, ReservationRequest> reservations = new ConcurrentDictionary<string, ReservationRequest>();
+        private static ConcurrentBag<ReservationRequest> importantReservations = new ConcurrentBag<ReservationRequest>();
+        public static void Create(ReservationRequest reservation)
         {
             reservations.TryAdd(reservation.Id.ToString(), reservation);
         }
 
-        public virtual void Stuff()
+        public static ConcurrentBag<ReservationRequest> PriorityReservations()
         {
-            
+            foreach(var value in reservations)
+            {
+                var request = value.Value;
+                if (request.Prepaid)
+                {
+                    importantReservations.Add(request);
+                }
+            }
+
+            return importantReservations;
         }
     }
 }

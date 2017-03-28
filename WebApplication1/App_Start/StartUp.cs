@@ -3,6 +3,7 @@ using Microsoft.Owin;
 using Owin;
 using System.Web.Http;
 using WebApplication1.App_Start;
+using WebApplication1.Jobs;
 
 [assembly: OwinStartup(typeof(StartUp))]
 
@@ -15,6 +16,7 @@ namespace WebApplication1.App_Start
             var config = new HttpConfiguration();
 
             WebApiConfig.Register(config);
+            JobScheduler.Start();
 
             app.UseApplicationInsights();
             app.UseWebApi(config);

@@ -10,8 +10,7 @@ namespace WebApplication1.Controllers
         [Route("Create")]
         public IHttpActionResult Reserve([FromBody]ReservationRequest reservation)
         {
-            var reservationService = new ReservationService();
-            reservationService.Create(reservation); 
+            ReservationService.Create(reservation); 
             return Ok();
         }
     }
