@@ -1,5 +1,4 @@
-# appinsight-owin-deepdive
-Asp.Net 4.6.2 Using Owin and Application Insights
+# Application Insights Deep Dive using Owin & posting messages to Slack.
 
 # Warming Up
 Quick recap on what Owin needs:
