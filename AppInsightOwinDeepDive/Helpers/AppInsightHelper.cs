@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
@@ -22,6 +23,11 @@ namespace AppInsightOwinDeepDive.Helpers
             stopwatch.Stop();
             eventTelemetry.Properties.Add("TimeToRun (ms)", stopwatch.ElapsedMilliseconds.ToString());
             telemetryClient.TrackEvent(eventTelemetry);
+        }
+
+        public static void LogMetric(Action action, string eventName, Dictionary<string, string> Properties)
+        {
+            LogMetric(action, eventName);
         }
     }
 }

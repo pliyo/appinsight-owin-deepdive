@@ -1,37 +1,53 @@
 ﻿using System.Collections.Concurrent;
-using System.Linq;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using AppInsightOwinDeepDive.Helpers;
 using AppInsightOwinDeepDive.Reservation;
 
 namespace AppInsightOwinDeepDive.Services
 {
     public static class ReservationService
     {
-        private static ConcurrentDictionary<string, ReservationRequest> reservations = new ConcurrentDictionary<string, ReservationRequest>();
-        private static ConcurrentBag<ReservationRequest> importantReservations = new ConcurrentBag<ReservationRequest>();
+        private static ConcurrentDictionary<string, ReservationRequest> _reservations = new ConcurrentDictionary<string, ReservationRequest>();
+        private static ConcurrentBag<ReservationRequest> _importantReservations = new ConcurrentBag<ReservationRequest>();
         public static void Create(ReservationRequest reservation)
         {
-            reservations.TryAdd(reservation.Id.ToString(), reservation);
+            AppInsightHelper.LogMetric(() => CreateReservation(reservation), "", SaveReservationProperties(reservation));
+        }
+
+        private static void CreateReservation(ReservationRequest reservation)
+        {
+            _reservations.TryAdd(reservation.Id.ToString(), reservation);
+        }
+
+        private static Dictionary<string, string> SaveReservationProperties(ReservationRequest reservation)
+        {
+            var properties = new Dictionary<string, string>()
+            {
+                {  "Owner", reservation.Owner }
+            };
+            return properties;
         }
 
         public static ConcurrentBag<ReservationRequest> PriorityReservations()
         {
-            foreach(var value in reservations)
+            foreach(var value in _reservations)
             {
                 var reservation = new ReservationRequest();
-                reservations.TryRemove(value.Key, out reservation);
+                _reservations.TryRemove(value.Key, out reservation);
 
                 if (reservation.Prepaid)
                 {
-                    importantReservations.Add(reservation);
+                    _importantReservations.Add(reservation);
                 }
             }
 
-            return importantReservations;
+            return _importantReservations;
         }
 
-        public static string SlackWebHook()
+        public static void CleanUpPriorityReservations()
         {
-            return PriorityReservations().First().SlackWebHook;
+            _importantReservations = new ConcurrentBag<ReservationRequest>();
         }
     }
 }

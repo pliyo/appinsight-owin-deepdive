@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInsightOwinDeepDive.Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInsightOwinDeepDive.UnitTests", "AppInsightOwinDeepDive.UnitTests\AppInsightOwinDeepDive.UnitTests.csproj", "{520D8E63-FAFF-4FF6-9D01-58FFFEBC7509}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInsightOwinDeepDive.Load", "AppInsightOwinDeepDive.Load\AppInsightOwinDeepDive.Load.csproj", "{CDF7905C-5DA3-4B3B-AE18-A4E9EC487F4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{520D8E63-FAFF-4FF6-9D01-58FFFEBC7509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{520D8E63-FAFF-4FF6-9D01-58FFFEBC7509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{520D8E63-FAFF-4FF6-9D01-58FFFEBC7509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF7905C-5DA3-4B3B-AE18-A4E9EC487F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF7905C-5DA3-4B3B-AE18-A4E9EC487F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF7905C-5DA3-4B3B-AE18-A4E9EC487F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF7905C-5DA3-4B3B-AE18-A4E9EC487F4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
