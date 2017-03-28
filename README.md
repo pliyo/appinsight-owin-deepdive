@@ -14,6 +14,11 @@ Cool, let's get started.
 
 # Application Insights
 
+Application Insights is the fastest way I know to get telemetry information out of your applications. It supports multiple languages and is hosted in Azure. Using it is as easy as installing `Microsoft.ApplicationInsights.Web` deploying your Application Insights component in Azure, grabbing your `Instrumentation Key` and adding it to your Api. If you are wondering, yes, it could also help you monitoring Windows Services or other kind of applications. They'll just need access to the internet to send that data through.
+
+It could serve you as a handy tool if you don't have any monitoring in place, or if you want to extends the functionalities of your open source stack (Low Data Retition Policy in ELK? Lack of DevOps support to your metric cluster? Serve yourself, there you go).
+
+In this exercise we'll use it with Owin as it's not as straight forward.
 Owin uses MiddleWare, so we'll need to build our own middleware to speak to Application Insights, HA! Luckily, Marcin Budny has done this work for us open sourcing a really nice extension [Here]( https://github.com/marcinbudny/applicationinsights-owinextensions "owinextension-applicationinsight"). Totally recommended. 
 
 # Architecture of the system that we want to monitor
