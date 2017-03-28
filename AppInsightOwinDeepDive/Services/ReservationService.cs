@@ -17,10 +17,12 @@ namespace AppInsightOwinDeepDive.Services
         {
             foreach(var value in reservations)
             {
-                var request = value.Value;
-                if (request.Prepaid)
+                var reservation = new ReservationRequest();
+                reservations.TryRemove(value.Key, out reservation);
+
+                if (reservation.Prepaid)
                 {
-                    importantReservations.Add(request);
+                    importantReservations.Add(reservation);
                 }
             }
 

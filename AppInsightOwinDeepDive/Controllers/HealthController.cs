@@ -4,7 +4,6 @@ namespace AppInsightOwinDeepDive.Controllers
 {
     public class HealthController : ApiController
     {
-        [Route("healthstatus")]
         [HttpGet]
         public IHttpActionResult Index()
         {

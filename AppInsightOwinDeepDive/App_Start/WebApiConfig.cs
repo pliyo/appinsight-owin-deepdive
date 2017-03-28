@@ -1,5 +1,4 @@
 ﻿using System.Web.Http;
-using Swashbuckle.Application;
 
 namespace AppInsightOwinDeepDive
 {
@@ -10,15 +9,8 @@ namespace AppInsightOwinDeepDive
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-            name: "swagger_root",
-            routeTemplate: "",
-            defaults: null,
-            constraints: null,
-            handler: new RedirectHandler((message => message.RequestUri.ToString()), "/swagger"));
-
-            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

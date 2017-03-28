@@ -7,7 +7,6 @@ namespace AppInsightOwinDeepDive.Controllers
     public class ReservationController : ApiController
     {
         [HttpPost]
-        [Route("Create")]
         public IHttpActionResult Reserve([FromBody]ReservationRequest reservation)
         {
             ReservationService.Create(reservation); 

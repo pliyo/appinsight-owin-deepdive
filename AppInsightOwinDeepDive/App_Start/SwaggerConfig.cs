@@ -16,11 +16,9 @@ namespace AppInsightOwinDeepDive
             GlobalConfiguration.Configuration 
                 .EnableSwagger(c =>
                     {
-                        c.SingleApiVersion("v1", "WebApplication1");
+                        c.SingleApiVersion("v1", "AppInsightOwinDeepDive");
                     })
-                .EnableSwaggerUi(c =>
-                    {
-                    });
+                .EnableSwaggerUi();
         }
     }
 }
