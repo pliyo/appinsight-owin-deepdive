@@ -5,18 +5,27 @@ namespace AppInsightOwinDeepDive.Services
 {
     public static class CommunicationService
     {
-        public static string SlackWebHook()
+        private static string _slackWebHook;
+        private static string _slackChannel;
+
+        public static void SetWebHook(string webHook)
         {
-            if(ReservationService.PriorityReservations().Any())
-                return ReservationService.PriorityReservations().First().SlackWebHook;
-            return string.Empty;
+            _slackWebHook = webHook;
         }
 
-        public static string SlackChannel()
+        public static void SetSlackChannel(string slackChannel)
         {
-            if (ReservationService.PriorityReservations().Any())
-                return ReservationService.PriorityReservations().First().SlackChannel;
-            return string.Empty;
+            _slackChannel = slackChannel;
+        }
+
+        public static string GetSlackWebHook()
+        {
+            return _slackWebHook;
+        }
+
+        public static string GetSlackChannel()
+        {
+            return _slackChannel;
         }
     }
 }

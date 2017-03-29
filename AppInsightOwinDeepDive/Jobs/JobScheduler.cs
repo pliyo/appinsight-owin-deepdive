@@ -15,7 +15,7 @@ namespace AppInsightOwinDeepDive.Jobs
             ITrigger trigger = TriggerBuilder.Create()
                 .WithDailyTimeIntervalSchedule
                   (s =>
-                     s.WithIntervalInMinutes(5)
+                     s.WithIntervalInMinutes(1)
                   )
                 .StartNow()
                 .Build();

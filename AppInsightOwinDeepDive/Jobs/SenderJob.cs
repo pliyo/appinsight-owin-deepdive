@@ -20,10 +20,10 @@ namespace AppInsightOwinDeepDive.Jobs
 
             var slackClient = new SlackClient();
 
-            var payload = CreatePayloadFromReservationInformation(CommunicationService.SlackChannel(),
+            var payload = CreatePayloadFromReservationInformation(CommunicationService.GetSlackChannel(),
                                                                   priorityReservations.Count);
 
-            slackClient.SendMessage(payload, CommunicationService.SlackWebHook());
+            slackClient.SendMessage(payload, CommunicationService.GetSlackWebHook());
         }
 
         private SlackPayload CreatePayloadFromReservationInformation(string slackChannel, int totalReservations)

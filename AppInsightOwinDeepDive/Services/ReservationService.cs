@@ -17,24 +17,13 @@ namespace AppInsightOwinDeepDive.Services
 
         private static void CreateReservation(ReservationRequest reservation)
         {
+            SetCommunicationNeeds(reservation);
             _reservations.TryAdd(reservation.Id.ToString(), reservation);
-        }
-
-        private static Dictionary<string, string> SaveReservationProperties(ReservationRequest reservation)
-        {
-            var properties = new Dictionary<string, string>()
-            {
-                { "Owner", reservation.Owner },
-                { "Prepaid", reservation.Prepaid.ToString() },
-                { "RequestDate", reservation.RequestDate.ToString() },
-                { "TicketId", reservation.TicketId.ToString() }
-            };
-            return properties;
         }
 
         public static ConcurrentBag<ReservationRequest> PriorityReservations()
         {
-            foreach(var value in _reservations)
+            foreach (var value in _reservations)
             {
                 var reservation = new ReservationRequest();
                 _reservations.TryRemove(value.Key, out reservation);
@@ -51,6 +40,26 @@ namespace AppInsightOwinDeepDive.Services
         public static void CleanUpPriorityReservations()
         {
             _importantReservations = new ConcurrentBag<ReservationRequest>();
+        }
+
+        private static Dictionary<string, string> SaveReservationProperties(ReservationRequest reservation)
+        {
+            var properties = new Dictionary<string, string>()
+            {
+                { "Owner", reservation.Owner },
+                { "Prepaid", reservation.Prepaid.ToString() },
+                { "RequestDate", reservation.RequestDate.ToString() },
+                { "TicketId", reservation.TicketId.ToString() }
+            };
+            return properties;
+        }
+
+        private static void SetCommunicationNeeds(ReservationRequest reservation)
+        {
+            if (!string.IsNullOrEmpty(reservation.SlackChannel))
+                CommunicationService.SetSlackChannel(reservation.SlackChannel);
+            if (!string.IsNullOrEmpty(reservation.SlackWebHook))
+                CommunicationService.SetWebHook(reservation.SlackWebHook);
         }
     }
 }
