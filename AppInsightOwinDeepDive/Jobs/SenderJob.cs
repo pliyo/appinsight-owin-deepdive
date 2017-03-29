@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Concurrent;
+using System.Linq;
 using Quartz;
 using AppInsightOwinDeepDive.Helpers;
 using AppInsightOwinDeepDive.Models;
+using AppInsightOwinDeepDive.Reservation;
 using AppInsightOwinDeepDive.Services;
 
 namespace AppInsightOwinDeepDive.Jobs
@@ -16,12 +18,19 @@ namespace AppInsightOwinDeepDive.Jobs
         private void SendNotificationsForPriorityReservations()
         {
             var priorityReservations = ReservationService.PriorityReservations();
-            ReservationService.CleanUpPriorityReservations();
+            if (priorityReservations.Any())
+            {
+                ReservationService.CleanUpPriorityReservations();
+                SendSlackMessage(priorityReservations);
+            }
+        }
 
+        private void SendSlackMessage(ConcurrentBag<ReservationRequest> priorityReservations)
+        {
             var slackClient = new SlackClient();
 
             var payload = CreatePayloadFromReservationInformation(CommunicationService.GetSlackChannel(),
-                                                                  priorityReservations.Count);
+                priorityReservations.Count);
 
             slackClient.SendMessage(payload, CommunicationService.GetSlackWebHook());
         }
