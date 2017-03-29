@@ -12,7 +12,7 @@ namespace AppInsightOwinDeepDive.Services
         private static ConcurrentBag<ReservationRequest> _importantReservations = new ConcurrentBag<ReservationRequest>();
         public static void Create(ReservationRequest reservation)
         {
-            AppInsightHelper.LogMetric(() => CreateReservation(reservation), "", SaveReservationProperties(reservation));
+            AppInsightHelper.LogMetric(() => CreateReservation(reservation), "ReservationAdded", SaveReservationProperties(reservation));
         }
 
         private static void CreateReservation(ReservationRequest reservation)
@@ -24,7 +24,10 @@ namespace AppInsightOwinDeepDive.Services
         {
             var properties = new Dictionary<string, string>()
             {
-                {  "Owner", reservation.Owner }
+                { "Owner", reservation.Owner },
+                { "Prepaid", reservation.Prepaid.ToString() },
+                { "RequestDate", reservation.RequestDate.ToString() },
+                { "TicketId", reservation.TicketId.ToString() }
             };
             return properties;
         }

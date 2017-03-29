@@ -16,6 +16,8 @@ namespace AppInsightOwinDeepDive.Jobs
         private void SendNotificationsForPriorityReservations()
         {
             var priorityReservations = ReservationService.PriorityReservations();
+            ReservationService.CleanUpPriorityReservations();
+
             var slackClient = new SlackClient();
 
             var payload = CreatePayloadFromReservationInformation(CommunicationService.SlackChannel(),
