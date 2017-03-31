@@ -28,3 +28,11 @@ Here is how our system behaves. If you look at the code, you'll realise that it 
 The design serves a second purpose which is run a refactor session (to be scheduled).
  
 ![App Insight Architecture that we are about to monitor](https://dl.dropboxusercontent.com/u/24713287/blog/researchs/appinsight-owin-deepdive/AppInsightOwinDeepDive.jpg)
+
+# Latest features in App Insight
+
+As soon as you get some traffic, it will build a mapping of your dependencies. I did a private branch on this project to send messages to 3 external sources: Slack, Azure Service Bus and Another Web Api hosted in Web Apps, and this is the result that I got:
+
+![App Map after a few queries](https://dl.dropboxusercontent.com/u/24713287/blog/researchs/appinsight-owin-deepdive/AppMap.jpg)
+
+
